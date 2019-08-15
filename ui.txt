@@ -1,0 +1,128 @@
+<template>
+    <div id="backgroundColor">
+        <h1 id="headlineStyle" class="text-center">LOL DASHBOARD</h1>
+        
+        <v-btn color="#FFBB00" >
+                <p class="btn-text">게임당 픽률</p>
+        </v-btn>
+        <div style="width:100%">
+            <v-simple-table class="table-size">
+                <thead>
+                    <tr>
+                        <th>순위</th>
+                        <th style="width:70px">챔피언</th>
+                        <th colspan="1.5"></th>
+                        <th>게임당 픽률</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(item, index) in chamions" :key="item.name">
+                        <td class="value-font">{{index+1}}</td>
+                        <td style="padding:0px;width:40px;">
+                            <img class="champion-cell"
+                            src="../assets/Neeko_Square_0.jpg"
+                            contain
+                            style="align=center"><img>
+                        </td>
+                        <td class="value-font">
+                            {{ item.name }}
+                        </td>
+                        <td>
+                            <div class="graph" :style="{width: item.pick+'px'}"></div>
+                            <span class="value-font value-color">{{item.pick}}%</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </v-simple-table>
+        </div>
+    </div>
+</template>
+
+<script>
+export default {
+    data(){
+        return {
+            chamions:[
+            {
+                name: "애니",
+                pick: 78
+            },{
+                name: "이즈리얼",
+                pick: 15,
+            },{
+                name: "아리",
+                pick: 7
+            }
+            ]
+        }
+    }
+    
+}
+</script>
+
+<style>
+    #backgroundColor{
+        background-color: white;
+        width: 100%;
+        height: 100%;
+    }
+    #headlineStyle{
+        margin-top: 1.5rem;
+        font-family: Helvetica, "Malgun Gothic", "Apple SD Gothic Neo", AppleGothic, Dotum, Arial, Tahoma;
+        font-size: 50px;
+        font-style: bold;
+    }
+    .table-size{
+        margin-left: auto; 
+        margin-right: auto;
+        width: 70%;
+        border: 1px solid #d5d8d8;
+    }
+    .table-headline{
+        font-size: 15px;
+        color: blueviolet;
+    }
+    .champion-cell{
+        margin-top: 13px;
+        display: block;
+        width: 35px;
+        height: 32px;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+    .value-font{
+        font-weight: bold;
+        font-size: 13px;
+        font-family: Helvetica, "Malgun Gothic", "Apple SD Gothic Neo", AppleGothic, Dotum, Arial, Tahoma;
+    }
+    .value-color{
+        margin-left: 3px;
+        color: #51758a;
+    }
+    .graph{
+        display: inline-block;
+        background-color: #1f8ecd;
+        border: 1px solid;
+        border-color: #1f8ecd;
+        max-width: 60%;
+        height: 10px;
+    }
+
+    .btn-text{
+        color: white;
+        font-weight: bold;
+        font-size: 13px;
+    }
+
+    .btn-background{
+        background-color: #FFBB00;
+        border: 1px solid #FFBB00;
+    }
+
+    .Row{
+        display: table-row;
+        vertical-align: inherit;
+        border-color: inherit;
+    }
+   
+</style>
